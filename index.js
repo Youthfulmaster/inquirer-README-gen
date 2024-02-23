@@ -21,11 +21,6 @@ const questions = [
     },
 
     {
-        type: 'input',
-        name: 'test',
-        message: 'What are the test instructions?',
-    },
-    {
         type: 'list',
         name: 'license',
         message: 'Choose a license for your application:',
@@ -45,7 +40,31 @@ const questions = [
 
 // Function to generate README content
 const generateReadme = (answers) => {
-  // Use template literals and Markdown formatting
+    return `
+# ${answers.title}
+
+## Description
+${answers.description}
+
+## Table of Contents
+- [Usage](#usage)
+- [License](#license)
+
+
+
+
+## Usage
+${answers.usage}
+
+## License
+This project is licensed under the ${answers.license} license.
+
+
+
+
+
+
+    `;
 };
 
 // Function to write README file
