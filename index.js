@@ -3,7 +3,44 @@ const fs = require('fs');
 
 // Define questions
 const questions = [
-  // Add inquirer questions here
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the title of your project?',
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Provide a description of the project:',
+    },
+
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'How do you use this application?',
+    },
+
+    {
+        type: 'input',
+        name: 'test',
+        message: 'What are the test instructions?',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'Choose a license for your application:',
+        choices: ['MIT', 'GPLv3', 'Apache 2.0', 'BSD 3-Clause', 'None'],
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub username:',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email address:',
+    }
 ];
 
 // Function to generate README content
