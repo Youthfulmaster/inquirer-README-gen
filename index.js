@@ -13,13 +13,26 @@ const questions = [
         name: 'description',
         message: 'Provide a description of the project:',
     },
-
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'What are the installation instructions?',
+    },
     {
         type: 'input',
         name: 'usage',
         message: 'How do you use this application?',
     },
-
+    {
+        type: 'input',
+        name: 'contribution',
+        message: 'What are the contribution guidelines?',
+    },
+    {
+        type: 'input',
+        name: 'test',
+        message: 'What are the test instructions?',
+    },
     {
         type: 'list',
         name: 'license',
@@ -47,11 +60,15 @@ const generateReadme = (answers) => {
 ${answers.description}
 
 ## Table of Contents
+- [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
-
-
+## Installation
+${answers.installation}
 
 ## Usage
 ${answers.usage}
@@ -59,31 +76,34 @@ ${answers.usage}
 ## License
 This project is licensed under the ${answers.license} license.
 
+## Contributing
+${answers.contribution}
 
+## Tests
+${answers.test}
 
-
-
-
+## Questions
+If you have any questions about the repo, open an issue or contact me directly at ${answers.email}. You can find more of my work at [${answers.github}](https://github.com/${answers.github}/).
     `;
 };
 
 // Function to write README file
 const writeReadme = (content) => {
-  fs.writeFile('README.md', content, (err) => {
-    if (err) throw err;
-    console.log('README.md generated!');
-  });
+    fs.writeFile('README.md', content, (err) => {
+        if (err) throw err;
+        console.log('README.md generated!');
+    });
 };
 
 // Main function
 const main = async () => {
-  try {
-    const answers = await inquirer.prompt(questions);
-    const readmeContent = generateReadme(answers);
-    writeReadme(readmeContent);
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    try {
+        const answers = await inquirer.prompt(questions);
+        const readmeContent = generateReadme(answers);
+        writeReadme(readmeContent);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 };
 
 main();
